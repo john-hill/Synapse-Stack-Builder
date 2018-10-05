@@ -207,145 +207,145 @@
 				]
 			}
 		},
-        "${stack}${instance}PathsStringSet": {
-            "Type": "AWS::WAFRegional::ByteMatchSet",
-            "Properties": {
-                "Name": "${stack}-${instance}-match-rfi-lfi-traversal",
-                "ByteMatchTuples": [
-                    {
-                        "FieldToMatch": {
-                            "Type": "URI"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "../",
-                        "TextTransformation": "URL_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "URI"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "../",
-                        "TextTransformation": "HTML_ENTITY_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "QUERY_STRING"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "../",
-                        "TextTransformation": "URL_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "QUERY_STRING"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "../",
-                        "TextTransformation": "HTML_ENTITY_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "URI"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "://",
-                        "TextTransformation": "URL_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "URI"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "://",
-                        "TextTransformation": "HTML_ENTITY_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "QUERY_STRING"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "://",
-                        "TextTransformation": "URL_DECODE"
-                    },
-                    {
-                        "FieldToMatch": {
-                            "Type": "QUERY_STRING"
-                        },
-                        "PositionalConstraint": "CONTAINS",
-                        "TargetString": "://",
-                        "TextTransformation": "HTML_ENTITY_DECODE"
-                    }
-                ]
-            }
-        },
-        "${stack}${instance}PathsRule": {
-            "Type": "AWS::WAFRegional::Rule",
-            "Properties": {
-                "MetricName": "${stack}${instance}PathsRule",
-                "Name": "${stack}-${instance}-Paths-Rule",
-                "Predicates": [
-                    {
-                        "Type": "ByteMatch",
-                        "Negated": false,
-                        "DataId": {
-                            "Ref": "${stack}${instance}PathsStringSet"
-                        }
-                    }
-                ]
-            }
-        },
-        "${stack}${instance}AdminUrlStringSet": {
-            "Type": "AWS::WAFRegional::ByteMatchSet",
-            "Properties": {
-                "Name": "${stack}-${instance}-match-admin-url",
-                "ByteMatchTuples": [
-                    {
-                        "FieldToMatch": {
-                            "Type": "URI"
-                        },
-                        "PositionalConstraint": "STARTS_WITH",
-                        "TargetString": "/repo/v1/admin",
-                        "TextTransformation": "URL_DECODE"
-                    }
-                ]
-            }
-        },
-        "${stack}${instance}AdminRemoteAddrIpSet": {
-            "Type": "AWS::WAFRegional::IPSet",
-            "Properties": {
-                "Name": "${stack}-${instance}-match-admin-remote-ip",
-                "IPSetDescriptors": [
-                    {
-                        "Type": "IPV4",
-                        "Value": "10.1.0.0/16"
-                    }
-                ]
-            }
-        },
-        "${stack}${instance}AdminAccessRule": {
-            "Type": "AWS::WAFRegional::Rule",
-            "Properties": {
-                "MetricName": "${stack}${instance}AdminAccessRule",
-                "Name": "${stack}-${instance}-Admin-Access-Rule",
-                "Predicates": [
-                    {
-                        "Type": "ByteMatch",
-                        "Negated": false,
-                        "DataId": {
-                            "Ref": "${stack}${instance}AdminUrlStringSet"
-                        }
-                    },
-                    {
-                        "Type": "IPMatch",
-                        "Negated": true,
-                        "DataId": {
-                            "Ref": "${stack}${instance}AdminRemoteAddrIpSet"
-                        }
-                    }
-                ]
-            }
-        },
+		"${stack}${instance}PathsStringSet": {
+			"Type": "AWS::WAFRegional::ByteMatchSet",
+			"Properties": {
+				"Name": "${stack}-${instance}-match-rfi-lfi-traversal",
+				"ByteMatchTuples": [
+					{
+						"FieldToMatch": {
+							"Type": "URI"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "../",
+						"TextTransformation": "URL_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "URI"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "../",
+						"TextTransformation": "HTML_ENTITY_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "QUERY_STRING"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "../",
+						"TextTransformation": "URL_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "QUERY_STRING"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "../",
+						"TextTransformation": "HTML_ENTITY_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "URI"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "://",
+						"TextTransformation": "URL_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "URI"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "://",
+						"TextTransformation": "HTML_ENTITY_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "QUERY_STRING"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "://",
+						"TextTransformation": "URL_DECODE"
+					},
+					{
+						"FieldToMatch": {
+							"Type": "QUERY_STRING"
+						},
+						"PositionalConstraint": "CONTAINS",
+						"TargetString": "://",
+						"TextTransformation": "HTML_ENTITY_DECODE"
+					}
+				]
+			}
+		},
+		"${stack}${instance}PathsRule": {
+			"Type": "AWS::WAFRegional::Rule",
+			"Properties": {
+				"MetricName": "${stack}${instance}PathsRule",
+				"Name": "${stack}-${instance}-Paths-Rule",
+				"Predicates": [
+					{
+						"Type": "ByteMatch",
+						"Negated": false,
+						"DataId": {
+							"Ref": "${stack}${instance}PathsStringSet"
+						}
+					}
+				]
+			}
+		},
+		"${stack}${instance}AdminUrlStringSet": {
+			"Type": "AWS::WAFRegional::ByteMatchSet",
+			"Properties": {
+				"Name": "${stack}-${instance}-match-admin-url",
+				"ByteMatchTuples": [
+					{
+						"FieldToMatch": {
+							"Type": "URI"
+						},
+						"PositionalConstraint": "STARTS_WITH",
+						"TargetString": "/repo/v1/admin",
+						"TextTransformation": "URL_DECODE"
+					}
+				]
+			}
+		},
+		"${stack}${instance}AdminRemoteAddrIpSet": {
+			"Type": "AWS::WAFRegional::IPSet",
+			"Properties": {
+				"Name": "${stack}-${instance}-match-admin-remote-ip",
+				"IPSetDescriptors": [
+					{
+						"Type": "IPV4",
+						"Value": "10.1.0.0/16"
+					}
+				]
+			}
+		},
+		"${stack}${instance}AdminAccessRule": {
+			"Type": "AWS::WAFRegional::Rule",
+			"Properties": {
+				"MetricName": "${stack}${instance}AdminAccessRule",
+				"Name": "${stack}-${instance}-Admin-Access-Rule",
+				"Predicates": [
+					{
+						"Type": "ByteMatch",
+						"Negated": false,
+						"DataId": {
+							"Ref": "${stack}${instance}AdminUrlStringSet"
+						}
+					},
+					{
+						"Type": "IPMatch",
+						"Negated": true,
+						"DataId": {
+							"Ref": "${stack}${instance}AdminRemoteAddrIpSet"
+						}
+					}
+				]
+			}
+		},
 		"${stack}${instance}WebACL": {
 			"Type": "AWS::WAFRegional::WebACL",
 			"Properties": {
@@ -428,6 +428,126 @@
 				"WebACLId": {
 					"Ref": "${stack}${instance}WebACL"
 				}
+			}
+		},
+		"deliverystream": {
+			"DependsOn": [
+				"deliveryPolicy"
+			],
+			"Type": "AWS::KinesisFirehose::DeliveryStream",
+			"Properties": {
+				"DeliveryStreamName": "aws-waf-logs-${stack}-${instance}",
+				"ExtendedS3DestinationConfiguration": {
+					"BucketARN": {
+						"Fn::Join": [
+							"",
+							[
+								"arn:aws:s3:::",
+								{
+									"Ref": "s3bucket"
+								}
+							]
+						]
+					},
+					"BufferingHints": {
+						"IntervalInSeconds": "60",
+						"SizeInMBs": "50"
+					},
+					"CompressionFormat": "UNCOMPRESSED",
+					"Prefix": "${stack}/${instance}/",
+					"RoleARN": {
+						"Fn::GetAtt": [
+							"deliveryRole",
+							"Arn"
+						]
+					}
+				}
+			}
+		},
+		"s3bucket": {
+			"Type": "AWS::S3::Bucket",
+			"Properties": {
+				"VersioningConfiguration": {
+					"Status": "Enabled"
+				},
+				"BucketName": "${stack}-web-acl-logs"
+			}
+		},
+		"deliveryRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Sid": "",
+							"Effect": "Allow",
+							"Principal": {
+								"Service": "firehose.amazonaws.com"
+							},
+							"Action": "sts:AssumeRole",
+							"Condition": {
+								"StringEquals": {
+									"sts:ExternalId": {
+										"Ref": "AWS::AccountId"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"deliveryPolicy": {
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "firehose_delivery_policy",
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"s3:AbortMultipartUpload",
+								"s3:GetBucketLocation",
+								"s3:GetObject",
+								"s3:ListBucket",
+								"s3:ListBucketMultipartUploads",
+								"s3:PutObject"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:s3:::",
+											{
+												"Ref": "s3bucket"
+											}
+										]
+									]
+								},
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:s3:::",
+											{
+												"Ref": "s3bucket"
+											},
+											"*"
+										]
+									]
+								}
+							]
+						}
+					]
+				},
+				"Roles": [
+					{
+						"Ref": "deliveryRole"
+					}
+				]
 			}
 		}
 	}
