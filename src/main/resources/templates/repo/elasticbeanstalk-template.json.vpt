@@ -150,6 +150,13 @@
 					},
 					{
 						"Namespace": "aws:ec2:vpc",
+						"OptionName": "ELBScheme",
+						"Value": {
+							"internal"
+						}
+					},
+					{
+						"Namespace": "aws:ec2:vpc",
 						"OptionName": "Subnets",
 						"Value": "${BeanstalkInstancesSubnets}"
 					},
