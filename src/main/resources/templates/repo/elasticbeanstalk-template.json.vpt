@@ -214,18 +214,6 @@
  					},
 					{
 						"Namespace": "aws:elbv2:loadbalancer",
-						"OptionName": "IdleTimeout",
-						"Value": "60"
-					},
-					{
-						"Namespace": "aws:elbv2:loadbalancer",
-						"OptionName": "ManagedSecurityGroup",
-						"Value": {
-							"Fn::ImportValue": "${sharedExportPrefix}-Load-Balancer-Security-Group-ID"
-						}
-					},
-					{
-						"Namespace": "aws:elbv2:loadbalancer",
 						"OptionName": "SecurityGroups",
 						"Value": {
 							"Fn::ImportValue": "${sharedExportPrefix}-Load-Balancer-Security-Group-ID"
