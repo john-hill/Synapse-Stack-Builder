@@ -237,7 +237,7 @@
 					{
 						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
 						"OptionName": "PathPatterns",
-						"Value": "/*"
+						"Value": "/${environment.refName}/*"
 					},
 					{
 						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
