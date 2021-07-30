@@ -127,9 +127,9 @@ public class ElasticBeanstalkExtentionBuilderImpl implements ElasticBeanstalkExt
 				Template beanstalkClodwatchConf = velocityEngine.getTemplate(TEMPLATE_EBEXTENSIONS_BEANSTALK_LOGS_CW_CONFIG);
 				addTemplateAsFileToDirectory(beanstalkClodwatchConf, context, resultFile);
 				// Beanstalk environment alarms
-				resultFile = fileProvider.createNewFile(ebextensionsDirectory, BEANSTALK_ALARMS_CONFIG);
-				Template beanstalkAlarms = velocityEngine.getTemplate(TEMPLATE_EBEXTENSIONS_BEANSTALK_ALARMS);
-				addTemplateAsFileToDirectory(beanstalkAlarms, context, resultFile);
+//				resultFile = fileProvider.createNewFile(ebextensionsDirectory, BEANSTALK_ALARMS_CONFIG);
+//				Template beanstalkAlarms = velocityEngine.getTemplate(TEMPLATE_EBEXTENSIONS_BEANSTALK_ALARMS);
+//				addTemplateAsFileToDirectory(beanstalkAlarms, context, resultFile);
 			}
 		});
 
