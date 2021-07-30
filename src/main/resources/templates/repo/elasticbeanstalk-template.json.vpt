@@ -225,117 +225,77 @@
 						"Value": "arn:aws:elasticloadbalancing:us-east-1:449435941126:loadbalancer/app/test-public-alb/669a617f2fa2e687"
 					},
 					{
-						"Namespace": "aws:elbv2:listener:default",
-						"OptionName": "DefaultProcess",
-						"Value": "default"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:default",
-						"OptionName": "ListenerEnabled",
-						"Value": "true"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:default",
-						"OptionName": "Protocol",
-						"Value": "HTTP"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:default",
-						"OptionName": "Rules",
-						"Value": "default"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:443",
-						"OptionName": "DefaultProcess",
-						"Value": "default"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:443",
-						"OptionName": "ListenerEnabled",
-						"Value": "true"
-					},
-					{
-						"Namespace": "aws:elbv2:listener:443",
-						"OptionName": "Protocol",
-						"Value": "HTTPS"
-					},
-					{
 						"Namespace": "aws:elbv2:listener:443",
 						"OptionName": "Rules",
-						"Value": "default"
+						"Value": "${environment.refName}Rule"
 					},
 					{
-						"Namespace": "aws:elbv2:listener:443",
-						"OptionName": "SSLCertificateArns",
-						"Value": "${environment.sslCertificateARN}"
+						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
+						"OptionName": "HostHeaders",
+						"Value": "*.synapse.org"
 					},
 					{
-						"Namespace": "aws:elbv2:listener:443",
-						"OptionName": "SSLPolicy",
-						"Value": "ELBSecurityPolicy-TLS-1-2-2017-01"
-					},
-					{
-						"Namespace": "aws:elbv2:listenerrule:default",
+						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
 						"OptionName": "PathPatterns",
 						"Value": "/*"
 					},
 					{
-						"Namespace": "aws:elbv2:listenerrule:default",
+						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
 						"OptionName": "Priority",
 						"Value": "1"
 					},
 					{
-						"Namespace": "aws:elbv2:listenerrule:default",
+						"Namespace": "aws:elbv2:listenerrule:${environment.refName}Rule",
 						"OptionName": "Process",
-						"Value": "default"
+						"Value": "${environment.refName}Process"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "DeregistrationDelay",
 						"Value": "60"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "HealthCheckInterval",
 						"Value": "30"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "HealthCheckPath",
 						"Value": "${environment.healthCheckUrl}"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "HealthCheckTimeout",
 						"Value": "5"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "HealthyThresholdCount",
 						"Value": "2"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "MatcherHTTPCode",
 						"Value": "200,201"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "Port",
 						"Value": "443"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "Protocol",
 						"Value": "HTTPS"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "StickinessEnabled",
 						"Value": "false"
 					},
 					{
-						"Namespace": "aws:elasticbeanstalk:environment:process:default",
+						"Namespace": "aws:elasticbeanstalk:environment:process:${environment.refName}Process",
 						"OptionName": "UnhealthyThresholdCount",
 						"Value": "5"
 					},
