@@ -553,7 +553,6 @@
 				"Type": "CNAME"
 			}
 		}
-		#parse("templates/repo/cloudwatch-logs-template.json.vpt")
 	},
 	"Outputs": {
 		"URL": {
