@@ -181,6 +181,11 @@
 						"Value": "application"
 					},
 					{
+						"Namespace": "aws:elasticbeanstalk:environment",
+						"OptionName": "LoadBalancerIsShared",
+						"Value": "true"
+					},
+					{
 						"Namespace": "aws:elasticbeanstalk:hostmanager",
 						"OptionName": "LogPublicationControl",
 						"Value": "true"
@@ -240,6 +245,11 @@
 						"Value": {
 							"Fn::ImportValue": "${sharedExportPrefix}-Load-Balancer-Security-Group-ID"
 						}
+					},
+					{
+						"Namespace": "aws:elbv2:loadbalancer",
+						"OptionName": "SharedLoadBalancer",
+						"Value": "arn:aws:elasticloadbalancing:us-east-1:449435941126:loadbalancer/app/test-public-alb/669a617f2fa2e687"
 					},
 					{
 						"Namespace": "aws:elbv2:listener:default",
