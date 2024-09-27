@@ -34,6 +34,7 @@ public class BedrockAgentContextProvider implements VelocityContextProvider {
 		JSONObject resources = baseTemplate.getJSONObject("Resources");
 		JSONObject bedrockAgentProps = resources.getJSONObject("bedrockAgent").getJSONObject("Properties");
 		bedrockAgentProps.put("AgentName", agentName);
+		bedrockAgentProps.put("orchestrationTemplate", TemplateUtils.loadContentFromFile("templates/repo/agent/orchestration-template.txt"));
 		String json = resources.toString();
 		context.put("bedrock_agent_resouces", "," + json.substring(1, json.length()-1));
 
