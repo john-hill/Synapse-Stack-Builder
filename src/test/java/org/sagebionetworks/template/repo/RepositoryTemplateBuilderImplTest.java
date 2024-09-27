@@ -100,6 +100,7 @@ import org.sagebionetworks.template.Ec2Client;
 import org.sagebionetworks.template.LoggerFactory;
 import org.sagebionetworks.template.StackTagsProvider;
 import org.sagebionetworks.template.TemplateGuiceModule;
+import org.sagebionetworks.template.TemplateUtils;
 import org.sagebionetworks.template.config.RepoConfiguration;
 import org.sagebionetworks.template.config.TimeToLive;
 import org.sagebionetworks.template.repo.agent.BedrockAgentContextProvider;
@@ -1469,6 +1470,14 @@ public class RepositoryTemplateBuilderImplTest {
 		ListPlatformVersionsResult expectedResult = new ListPlatformVersionsResult()
 				.withPlatformSummaryList(expectedSummaries);
 		when(mockBeanstalkClient.listPlatformVersions(expectedRequest)).thenReturn(expectedResult);
+	}
+	
+	@Test
+	public void test() {
+		String tempalte = TemplateUtils.loadContentFromFile("templates/repo/agent/orchestration-template.txt");
+		JSONObject temp = new JSONObject();
+		temp.put("temo", tempalte);
+		System.out.println(temp.toString());
 	}
 
 }
